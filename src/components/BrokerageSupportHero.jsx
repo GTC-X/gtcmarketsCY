@@ -1,6 +1,6 @@
 export function BrokerageSupportHero() {
   return (
-    <section className="gtc-section relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gtc-dark">
+    <section className="gtc-section relative w-full overflow-x-clip bg-gtc-dark">
       <div className="absolute inset-0">
         <div className="absolute -left-40 top-[-140px] h-[380px] w-[380px] rounded-full bg-gtc-primary/20 blur-3xl" />
         <div className="absolute left-[35%] top-[55%] h-[320px] w-[320px] rounded-full bg-gtc-accent/10 blur-3xl" />
