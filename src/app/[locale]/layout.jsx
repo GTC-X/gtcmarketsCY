@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { LocaleProvider } from './LocaleProvider';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { ToastProvider } from '@/components/ToastProvider';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,6 +32,7 @@ export default async function LocaleLayout({ children, params }) {
       <Header locale={locale} nav={nav} />
       <main className="mx-auto w-full">{children}</main>
       <Footer />
+      <ToastProvider />
     </LocaleProvider>
   );
 }

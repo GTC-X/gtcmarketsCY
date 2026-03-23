@@ -1,26 +1,22 @@
 import { NextResponse } from 'next/server';
-import { locales, defaultLocale } from '@/i18n/config';
+import { defaultLocale } from '@/i18n/config';
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
+  const localePrefix = `/${defaultLocale}`;
 
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
-
-  if (pathnameHasLocale) return NextResponse.next();
-
-  let locale = defaultLocale;
-  const acceptLanguage = request.headers.get('accept-language');
-  if (acceptLanguage) {
-    const preferred = acceptLanguage
-      .split(',')
-      .map((s) => s.split(';')[0].trim().slice(0, 2));
-    locale = locales.find((l) => preferred.includes(l)) ?? defaultLocale;
+  // Hide locale prefix from users if it is accessed directly.
+  if (pathname === localePrefix || pathname.startsWith(`${localePrefix}/`)) {
+    const strippedPath = pathname.slice(localePrefix.length) || '/';
+    const url = request.nextUrl.clone();
+    url.pathname = strippedPath;
+    return NextResponse.redirect(url);
   }
 
-  request.nextUrl.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  // Internally map clean URLs to locale-based app routes.
+  const url = request.nextUrl.clone();
+  url.pathname = `${localePrefix}${pathname === '/' ? '' : pathname}`;
+  return NextResponse.rewrite(url);
 }
 
 export const config = {

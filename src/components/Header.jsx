@@ -41,9 +41,9 @@ export function Header({ locale, nav }) {
     () => [
       { label: nav?.home ?? 'Home', href: `/${locale}` },
       { label: nav?.about ?? 'About Us', href: `/${locale}/about` },
-      { label: nav?.services ?? 'Our Services', href: `/${locale}#services` },
-      { label: nav?.careers ?? 'Careers', href: `/${locale}#careers` },
-      { label: nav?.contact ?? 'Contact', href: `/${locale}#contact` },
+      { label: nav?.services ?? 'Our Services', href: `/${locale}/services` },
+      { label: nav?.careers ?? 'Careers', href: `/${locale}/careers` },
+      { label: nav?.contact ?? 'Contact', href: `/${locale}/contact` },
     ],
     [locale, nav],
   );
@@ -77,12 +77,9 @@ export function Header({ locale, nav }) {
               </Link>
             );
           })}
-          <span className="mx-2 h-6 w-px bg-gray-200" aria-hidden="true" />
-          <LanguageSwitcher locale={locale} />
-        </nav>
+          </nav>
 
         <div className="ms-auto flex items-center gap-3 lg:hidden">
-          <LanguageSwitcher locale={locale} />
           <button
             type="button"
             aria-label={open ? 'Close menu' : 'Open menu'}
