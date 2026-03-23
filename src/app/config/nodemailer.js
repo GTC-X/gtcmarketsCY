@@ -2,12 +2,12 @@
 import nodemailer from "nodemailer";
 
 export const transporter = nodemailer.createTransport({
-  host: "smtp.mailgun.org", // Mailgun SMTP host
-  port: 465, // SSL/TLS port
-  secure: true, // Use TLS
+  host: process.env.SMTP_HOST || "smtp.mailgun.org", // Mailgun SMTP host
+  port: Number(process.env.SMTP_PORT || 465), // SSL/TLS port
+  secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : true, // Use TLS
   auth: {
-    user: "portal@mx5.gtcmail.com", // Mailgun SMTP username
-    pass: "d31a2f69af2b795ef0a632f1b11c79d1-653fadca-a3eb0f11", // Mailgun SMTP password
+    user: process.env.SMTP_USER, // Mailgun SMTP username
+    pass: process.env.SMTP_PASS, // Mailgun SMTP password
   },
 });
 
@@ -36,9 +36,9 @@ import formData from "form-data";
 const mg = new Mailgun(formData);
 
 export const mailgunClient = mg.client({
-  username: "api",
-  key: "fefaa6885175faea6d180940d69e415a-02300200-60e6fa68",
-  url: "https://api.mailgun.net" || "https://api.mailgun.net",
+  username: process.env.MAILGUN_USERNAME || "api",
+  key: process.env.MAILGUN_API_KEY,
+  url: process.env.MAILGUN_API_URL || "https://api.mailgun.net",
 });
 
 export const MAILGUN_DOMAIN = "mx5.gtcmail.com" || "mx5.gtcmail.com";
