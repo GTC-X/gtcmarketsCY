@@ -2,7 +2,7 @@ export function NewPageHero() {
   return (
     <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#070c18] via-[#08122a] to-[#070c18] px-6 py-16 text-white shadow-[0_20px_70px_rgba(2,6,23,0.45)] sm:px-10 sm:py-20">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-28 -top-28 h-72 w-72 rounded-full bg-blue-600/20 blur-3xl" />
+        <div className="absolute -left-28 -top-28 h-72 w-72 rounded-full bg-[#101938]/20 blur-3xl" />
         <div className="absolute left-[35%] top-[55%] h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
         <div className="absolute -right-28 top-10 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(closest-side_at_30%_20%,rgba(255,255,255,0.12),transparent_60%)]" />

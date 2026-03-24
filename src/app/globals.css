@@ -120,12 +120,12 @@ a:hover {
   }
 
   .gtc-heading {
-    @apply text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl;
+    @apply text-2xl font-semibold tracking-tight text-[#101938] sm:text-3xl md:text-4xl;
   }
 
   /* Typography helpers */
   .gtc-title {
-    @apply text-2xl font-bold leading-snug tracking-tight text-slate-900 sm:text-3xl md:text-4xl ;
+    @apply text-2xl font-bold leading-snug tracking-tight text-[#101938] sm:text-3xl md:text-5xl ;
   }
 
   .gtc-subtitle {
@@ -137,7 +137,7 @@ a:hover {
   }
 
   .gtc-card-title {
-    @apply text-xl font-semibold tracking-tight text-slate-900 sm:text-xl md:text-2xl;
+    @apply text-xl font-semibold tracking-tight text-[#101938] sm:text-xl md:text-2xl;
   }
 
   .gtc-card-desc {

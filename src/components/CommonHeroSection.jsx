@@ -28,8 +28,8 @@ export function CommonHeroSection({
 
       <div className={`relative gtc-container mx-auto text-center ${contentMaxWidthClass}`}>
         {eyebrow ? <p className="gtc-eyebrow text-white/70">{eyebrow}</p> : null}
-        <h1 className="mt-3 gtc-title text-white sm:mt-4">{title}</h1>
-        <p className="mt-4 gtc-body text-white/85 sm:mt-6">{description}</p>
+        <h1 className="mt-3 gtc-title text-white sm:mt-4 leading-tight">{title}</h1>
+        <p className="mt-4 gtc-body text-white/85 sm:mt-6 md:text-xl">{description}</p>
         {ctaLabel && ctaHref ? (
           <div className="mt-6 sm:mt-8">
             <Link href={ctaHref} className={ctaClassName}>
@@ -39,9 +39,9 @@ export function CommonHeroSection({
         ) : null}
       </div>
       {extraImg &&
-        <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 w-full max-w-4xl -translate-x-1/2 translate-y-1/2 px-4">
+        <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 w-full max-w-7xl -translate-x-1/2 translate-y-1/2 px-4">
           <img
-            className="h-64 w-full object-contain sm:h-80 md:h-[600px]"
+            className="h-64 w-full object-contain sm:h-80 md:h-[550px]"
             src="/home-banner-img.webp"
             alt="Hero visual"
           />
