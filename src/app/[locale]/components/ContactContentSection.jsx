@@ -14,7 +14,7 @@ export function ContactContentSection({ locale = 'en' }) {
         marketing support can help strengthen your brokerage operations.
       </p>
       <div className="mt-8">
-        <a href="mailto:info@gtcmarkets.cy" className="gtc-primary-btn">
+        <a  className="gtc-primary-btn">
           Contact Our Team
         </a>
       </div>

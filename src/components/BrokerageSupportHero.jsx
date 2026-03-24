@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function BrokerageSupportHero() {
   return (
     <section
@@ -25,9 +27,9 @@ export function BrokerageSupportHero() {
           </p>
 
           <div className="mt-7">
-            <button type="button" className="gtc-primary-btn focus:ring-offset-gtc-dark">
+            <Link href="/contact" className="gtc-primary-btn focus:ring-offset-gtc-dark">
               Contact Our Team
-            </button>
+            </Link>
           </div>
         </div>
 

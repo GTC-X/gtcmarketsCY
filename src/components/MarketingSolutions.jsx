@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const solutions = [
   {
     eyebrow: 'Search Visibility & SEO',
@@ -37,9 +39,9 @@ const solutions = [
   },
 ];
 
-export function MarketingSolutions() {
+export function MarketingSolutions({ servicePage = false }) {
   return (
-    <section className="gtc-section bg-gtc-surface py-8 sm:py-16">
+    <section className={`gtc-section bg-gtc-surface  ${servicePage ? 'py-8 sm:py-16' : 'pb-8'}`}>
       <div
         className="pointer-events-none absolute inset-0 opacity-80"
         aria-hidden="true"
@@ -49,7 +51,7 @@ export function MarketingSolutions() {
       </div>
 
       <div className="relative gtc-container">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
+        <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-12">
           <h2 className="gtc-title">
             Strategic Marketing Solutions for Brokerage Growth
           </h2>
@@ -99,9 +101,9 @@ export function MarketingSolutions() {
         </div>
 
         <div className="mt-8 flex justify-center sm:mt-12">
-          <button type="button" className="gtc-primary-btn">
+          <Link href="/services" className="gtc-primary-btn">
             Explore Marketing Solutions
-          </button>
+          </Link>
         </div>
       </div>
     </section>
