@@ -92,7 +92,7 @@ function ExpandingCard({
   return (
     <div
       className={[
-        'group relative flex h-[320px] min-w-[84px] flex-[1] cursor-default flex-col overflow-hidden rounded-xl border border-gtc-border bg-white shadow-gtc transition-[flex,transform,box-shadow,border-color] duration-300 ease-out',
+        'group relative flex h-[400px] min-w-[84px] flex-[1] cursor-default flex-col overflow-hidden rounded-xl border border-gtc-border bg-white shadow-gtc transition-[flex,transform,box-shadow,border-color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
         active ? 'flex-[3] -translate-y-0.5 border-gtc-primary/20 shadow-gtc-lg' : 'hover:border-gtc-primary/20',
       ].join(' ')}
       onMouseEnter={onEnter}
@@ -106,9 +106,9 @@ function ExpandingCard({
         aria-label={title}
       />
 
-      <div className="relative z-0 flex h-full flex-col p-4 sm:p-5">
+      <div className="relative z-0 flex h-full flex-col p-5 sm:p-6">
         {/* Collapsed (vertical) label */}
-        <div className={active ? 'hidden' : 'flex h-full flex-col items-center justify-between'}>
+        <div className={active ? 'hidden' : 'flex h-full flex-col items-center justify-end gap-3'}>
           <div
             className="select-none text-lg font-semibold tracking-tight text-slate-900 sm:text-xl"
             style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}

@@ -2,15 +2,18 @@ import Link from 'next/link';
 
 export function CareersHero({ locale = 'en' }) {
   return (
-    <div className=" mt-10 md:mt-14 gtc-container">
-    <section className="p-6 relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 via-gtc-dark to-slate-800 py-10 text-white shadow-gtc-lg sm:rounded-3xl sm:py-16 md:py-20">
+    <section
+      className="gtc-section relative mt-10 flex w-full min-h-[560px] items-center overflow-hidden bg-cover bg-center bg-no-repeat py-10 text-white sm:mt-14 sm:min-h-[680px] sm:py-16 md:min-h-[780px] md:py-20"
+      style={{ backgroundImage: "url('/career-banner.jpg')" }}
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -right-20 top-1/4 h-96 w-96 rounded-full bg-emerald-500/15 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-gtc-primary/15 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_80%,rgba(255,255,255,0.05),transparent)]" />
+        <div className="absolute inset-0 bg-slate-900/55" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_80%,rgba(255,255,255,0.1),transparent)]" />
       </div>
 
-      <div className="relative mx-auto text-center max-w-6xl">
+      <div className="relative gtc-container mx-auto max-w-6xl text-center">
         <p className="gtc-eyebrow text-white/70">
           Careers
         </p>
@@ -31,6 +34,5 @@ export function CareersHero({ locale = 'en' }) {
         </div>
       </div>
     </section>
-    </div>
   );
 }
