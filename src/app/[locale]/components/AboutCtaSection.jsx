@@ -2,10 +2,13 @@ import Link from 'next/link';
 
 export function AboutCtaSection({ locale = 'en' }) {
   return (
-    <div className=" mb-8 md:mb-14 gtc-container">
-    <section className="p-6 relative gtc-section overflow-hidden rounded-2xl bg-gradient-to-r from-gtc-primary to-gtc-primary-hover py-10 text-white shadow-gtc-lg sm:rounded-3xl sm:py-16 md:py-20">
+    <section
+      className="gtc-section relative mb-8 w-full overflow-hidden bg-cover bg-center bg-no-repeat py-10 text-white md:mb-14 sm:py-16 md:py-20"
+      style={{ backgroundImage: "url('/about-footer.jpg')" }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-slate-900/55" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,255,255,0.12),transparent)]" aria-hidden="true" />
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative gtc-container mx-auto max-w-3xl text-center">
         <h2 className="gtc-heading text-white">
           Ready to Grow Your Fintech Business?
         </h2>
@@ -24,6 +27,5 @@ export function AboutCtaSection({ locale = 'en' }) {
         </div>
       </div>
     </section>
-    </div>
   );
 }

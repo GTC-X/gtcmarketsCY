@@ -2,15 +2,18 @@ import Link from 'next/link';
 
 export function ServicesHero({ locale = 'en' }) {
   return (
-    <div className=" mt-10 md:mt-14 gtc-container">
-    <section className="p-6 relative overflow-hidden rounded-2xl bg-gradient-to-br from-gtc-dark via-[#0e2744] to-gtc-dark py-10 text-white shadow-gtc-lg sm:rounded-3xl sm:py-16 md:py-20">
+    <section
+      className="gtc-section relative flex w-full min-h-[560px] items-center overflow-hidden bg-cover bg-center bg-no-repeat text-white sm:min-h-[680px] md:min-h-[780px]"
+      style={{ backgroundImage: "url('/service-banner.jpg')" }}
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-gtc-primary/25 blur-3xl" />
         <div className="absolute right-1/4 bottom-0 h-72 w-72 rounded-full bg-gtc-accent/12 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(255,255,255,0.06),transparent)]" />
+        <div className="absolute inset-0 bg-slate-900/55" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(255,255,255,0.1),transparent)]" />
       </div>
 
-      <div className="relative mx-auto text-center max-w-6xl">
+      <div className="relative gtc-container mx-auto max-w-6xl text-center">
         <p className="gtc-eyebrow text-white/70">
           Our Services
         </p>
@@ -30,6 +33,5 @@ export function ServicesHero({ locale = 'en' }) {
         </div>
       </div>
     </section>
-    </div>
   );
 }

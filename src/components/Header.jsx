@@ -52,13 +52,7 @@ export function Header({ locale, nav }) {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur">
       <div className="mx-auto flex gtc-container gap-4 py-4">
         <Link href={`/${locale}`} className="flex items-center gap-2">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-sm font-semibold text-white">
-            G
-          </span>
-          <div className="leading-tight">
-            <p className="text-xs font-semibold tracking-tight text-gray-900 sm:text-sm">GTC FX</p>
-            <p className="text-[10px] font-medium text-gray-500 sm:text-[11px]">Brokerage Growth</p>
-          </div>
+          <img className=' md:h-12 h-10' src="/logo-blue.png" alt="" />
         </Link>
 
         <nav className="ms-auto hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -77,7 +71,7 @@ export function Header({ locale, nav }) {
               </Link>
             );
           })}
-          </nav>
+        </nav>
 
         <div className="ms-auto flex items-center gap-3 lg:hidden">
           <button
