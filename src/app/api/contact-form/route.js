@@ -65,11 +65,11 @@ export async function POST(req) {
       resume,
     } = body || {};
 
-    if (!resume) {
-      return NextResponse.json({ error: 'Missing resume or fileName' }, { status: 400 });
-    }
+    // if (!resume) {
+    //   return NextResponse.json({ error: 'Missing resume or fileName' }, { status: 400 });
+    // }
 
-    const attachmentBuffer = Buffer.from(resume, 'base64');
+    // const attachmentBuffer = Buffer.from(resume, 'base64');
     const subject = 'A new contact form submission has been received';
     const { html } = generateEmailContent({
       first_name,
@@ -82,23 +82,41 @@ export async function POST(req) {
       cover_letter,
     });
 
-    await mailgunClient.messages.create(MAILGUN_DOMAIN, {
+    const result = await mailgunClient.messages.create(MAILGUN_DOMAIN, {
       from: MAILGUN_FROM,
       to: 'zeeshan@gtcfx.com',
+      bcc: 'zeeshan@gtcfx.com',
       subject,
       text: `New contact request from ${first_name || ''} ${last_name || ''} (${email || '-'})`,
       html,
-      attachment: [
-        {
-          filename: fileName || 'attachment.pdf',
-          data: attachmentBuffer,
-        },
-      ],
+      // attachment: [
+      //   {
+      //     filename: fileName || 'attachment.pdf',
+      //     data: attachmentBuffer,
+      //   },
+      // ],
+    });
+
+    console.log('[contact-form] Mailgun accepted', {
+      id: result?.id,
+      message: result?.message,
+      to: 'aliadeel35@gmail.com',
+      bcc: 'zeeshan@gtcfx.com',
+      from: MAILGUN_FROM,
     });
 
     return NextResponse.json({ message: 'Success', data: body }, { status: 200 });
   } catch (err) {
-    console.error('Mailgun send error:', err);
+    const errorDetails = {
+      name: err?.name,
+      message: err?.message,
+      status: err?.status || err?.statusCode,
+      code: err?.code,
+      details: err?.details,
+      responseBody: err?.response?.body || err?.body,
+      stack: err?.stack,
+    };
+    console.error('[contact-form] Mailgun send error:', errorDetails);
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }
