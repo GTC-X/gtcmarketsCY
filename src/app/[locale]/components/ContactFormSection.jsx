@@ -24,7 +24,7 @@ export function ContactFormSection() {
       phone: '',
       subject: '',
       message: '',
-      // resume: null,
+      resume: null,
       coverLetter: '',
     },
     validate: (values) => {
@@ -40,7 +40,7 @@ export function ContactFormSection() {
       if (!values.phone) errors.phone = 'Phone number is required.';
       if (!values.subject) errors.subject = 'Please select an inquiry type.';
       if (!values.message.trim()) errors.message = 'Message is required.';
-      // if (!values.resume) errors.resume = 'Resume / CV is required.';
+      if (!values.resume) errors.resume = 'Resume / CV is required.';
       if (!values.coverLetter.trim()) errors.coverLetter = 'Cover letter is required.';
 
       return errors;
@@ -49,16 +49,16 @@ export function ContactFormSection() {
       setStatus('sending');
 
       try {
-        // const resumeBase64 = await new Promise((resolve, reject) => {
-        //   const reader = new FileReader();
-        //   reader.onload = () => {
-        //     const result = String(reader.result || '');
-        //     const base64 = result.includes(',') ? result.split(',')[1] : result;
-        //     resolve(base64);
-        //   };
-        //   reader.onerror = reject;
-        //   reader.readAsDataURL(values.resume);
-        // });
+        const resumeBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = String(reader.result || '');
+            const base64 = result.includes(',') ? result.split(',')[1] : result;
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(values.resume);
+        });
 
         const nameParts = values.fullName.trim().split(/\s+/);
         const firstName = nameParts[0] || '';
@@ -74,7 +74,7 @@ export function ContactFormSection() {
           message: values.message.trim(),
           cover_letter: values.coverLetter.trim(),
           fileName: values.resume?.name || 'attachment',
-          // resume: resumeBase64,
+          resume: resumeBase64,
         };
 
         const res = await fetch('/api/contact-form', {

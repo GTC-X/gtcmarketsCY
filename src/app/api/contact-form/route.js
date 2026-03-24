@@ -65,11 +65,11 @@ export async function POST(req) {
       resume,
     } = body || {};
 
-    // if (!resume) {
-    //   return NextResponse.json({ error: 'Missing resume or fileName' }, { status: 400 });
-    // }
+    if (!resume) {
+      return NextResponse.json({ error: 'Missing resume or fileName' }, { status: 400 });
+    }
 
-    // const attachmentBuffer = Buffer.from(resume, 'base64');
+    const attachmentBuffer = Buffer.from(resume, 'base64');
     const subject = 'A new contact form submission has been received';
     const { html } = generateEmailContent({
       first_name,
@@ -89,12 +89,12 @@ export async function POST(req) {
       subject,
       text: `New contact request from ${first_name || ''} ${last_name || ''} (${email || '-'})`,
       html,
-      // attachment: [
-      //   {
-      //     filename: fileName || 'attachment.pdf',
-      //     data: attachmentBuffer,
-      //   },
-      // ],
+      attachment: [
+        {
+          filename: fileName || 'attachment.pdf',
+          data: attachmentBuffer,
+        },
+      ],
     });
 
     console.log('[contact-form] Mailgun accepted', {
