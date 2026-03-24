@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 function ArrowIcon(props) {
@@ -100,13 +101,16 @@ function ExpandingCard({
     >
       <button
         type="button"
-        className="absolute inset-0 z-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gtc-primary/40"
+        className={[
+          'absolute inset-0 focus:outline-none focus:ring-2 focus:ring-gtc-primary/40',
+          active ? 'pointer-events-none z-0' : 'z-10 cursor-pointer',
+        ].join(' ')}
         onFocus={onFocus}
         onBlur={onBlur}
         aria-label={title}
       />
 
-      <div className="relative z-0 flex h-full flex-col p-5 sm:p-6">
+      <div className="relative z-20 flex h-full flex-col p-5 sm:p-6">
         {/* Collapsed (vertical) label */}
         <div className={active ? 'hidden' : 'flex h-full flex-col items-center justify-end gap-3'}>
           <div
@@ -130,14 +134,13 @@ function ExpandingCard({
 
           <div className="mt-auto pt-6">
             {ctaLabel ? (
-              <button type="button" className="gtc-primary-btn">
+              <Link href="/contact" className="gtc-primary-btn">
                 {ctaLabel}
-              </button>
+              </Link>
             ) : (
-              <div className="inline-flex items-center gap-2 rounded-full bg-gtc-primary/10 px-3 py-1 text-xs font-semibold text-gtc-primary">
-                <span>Explore</span>
-                <ArrowIcon className="h-4 w-4" />
-              </div>
+              <Link href="/contact" className="gtc-primary-btn">
+                Get a consultation
+              </Link>
             )}
           </div>
         </div>
@@ -199,7 +202,7 @@ export function DevopsFintechSolutions() {
     <section className="gtc-section bg-white py-10 sm:py-16">
       <div className="gtc-container">
         <div className="mb-8 sm:mb-10">
-          <h2 className="gtc-title">
+          <h2 className="gtc-title max-w-2xl">
             Advanced DevOps &amp; Fintech Infrastructure
           </h2>
           <p className="gtc-subtitle ">
@@ -220,9 +223,9 @@ export function DevopsFintechSolutions() {
             </p>
 
             <div className="mt-6 sm:mt-8">
-              <button type="button" className="gtc-primary-btn">
+              <Link href="/contact" className="gtc-primary-btn">
                 Get a consultation
-              </button>
+              </Link>
             </div>
           </article>
 
@@ -305,12 +308,9 @@ export function DevopsFintechSolutions() {
         </div>
 
         <div className="mt-8 flex justify-center sm:mt-10">
-          <button
-            type="button"
-            className="gtc-primary-btn"
-          >
+          <Link href="/services" className="gtc-primary-btn">
             Discover DevOps Solutions
-          </button>
+          </Link>
         </div>
       </div>
     </section>

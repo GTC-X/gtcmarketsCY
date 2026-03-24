@@ -12,7 +12,7 @@ export function ServicesCtaSection({ locale = 'en' }) {
           brokerage businesses operate efficiently and grow in competitive markets.
         </p>
         <div className="mt-8">
-          <Link href={`/${locale}/new/contact`} className="gtc-primary-btn">
+          <Link href={`/contact`} className="gtc-primary-btn">
             Contact Our Team
           </Link>
         </div>

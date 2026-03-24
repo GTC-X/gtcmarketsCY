@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function AboutCtaSection({ locale = 'en' }) {
   return (
     <section
-      className="gtc-section relative mb-8 w-full overflow-hidden bg-cover bg-center bg-no-repeat py-10 text-white md:mb-14 sm:py-16 md:py-20"
+      className="gtc-section relative w-full overflow-hidden bg-cover bg-center bg-no-repeat py-10 text-white sm:py-16 md:py-20"
       style={{ backgroundImage: "url('/about-footer.jpg')" }}
     >
       <div className="pointer-events-none absolute inset-0 bg-slate-900/55" aria-hidden="true" />

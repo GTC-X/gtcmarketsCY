@@ -26,11 +26,23 @@ function CloseIcon(props) {
   );
 }
 
-function isActivePath(pathname, href) {
+function normalizePath(path, locale) {
+  if (!path) return '/';
+  const localePrefix = `/${locale}`;
+  if (path === localePrefix) return '/';
+  if (path.startsWith(`${localePrefix}/`)) return path.slice(localePrefix.length) || '/';
+  return path;
+}
+
+function isActivePath(pathname, href, locale) {
   if (!pathname) return false;
   if (href.includes('#')) return false;
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(`${href}/`);
+
+  const current = normalizePath(pathname, locale);
+  const target = normalizePath(href, locale);
+
+  if (target === '/') return current === '/';
+  return current === target || current.startsWith(`${target}/`);
 }
 
 export function Header({ locale, nav }) {
@@ -57,7 +69,7 @@ export function Header({ locale, nav }) {
 
         <nav className="ms-auto hidden items-center gap-1 lg:flex" aria-label="Primary">
           {items.map((item) => {
-            const active = isActivePath(pathname, item.href);
+            const active = isActivePath(pathname, item.href, locale);
             return (
               <Link
                 key={item.label}

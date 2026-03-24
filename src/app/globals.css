@@ -125,7 +125,7 @@ a:hover {
 
   /* Typography helpers */
   .gtc-title {
-    @apply text-2xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-3xl md:text-4xl ;
+    @apply text-2xl font-bold leading-snug tracking-tight text-slate-900 sm:text-3xl md:text-4xl ;
   }
 
   .gtc-subtitle {
