@@ -22,7 +22,7 @@ export default async function NewServicesPage({ params }) {
           eyebrow="Our Services"
           title="Marketing & DevOps Solutions for Fintech and Brokerage Businesses"
           description="GTC MARKETS (CY) LTD provides strategic marketing solutions and advanced DevOps infrastructure designed to support brokerage platforms and fintech companies. Our solutions help financial businesses strengthen their digital presence, optimize technology infrastructure, and scale efficiently in global markets."
-          minHeightClass="min-h-[480px] sm:min-h-[400px] md:min-h-[430px]"
+          minHeightClass="min-h-[300px] sm:min-h-[400px] md:min-h-[430px]"
           innerMaxWidthClass="max-w-3xl text-left"
         />
       </Reveal>

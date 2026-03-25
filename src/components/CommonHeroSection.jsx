@@ -11,7 +11,7 @@ export function CommonHeroSection({
   sectionClassName = '',
   overlayClassName = 'bg-slate-900/55',
   ctaClassName = 'gtc-primary-btn',
-  contentMaxWidthClass = 'max-w-6xl',
+  contentMaxWidthClass = 'container',
   extraImg = false,
   innerMaxWidthClass = '',
 }) {
@@ -28,20 +28,20 @@ export function CommonHeroSection({
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_40%,rgba(255,255,255,0.1),transparent)]" />
 
       <div className={`relative gtc-container mx-auto text-center ${contentMaxWidthClass}`}>
-        <h1 className={`mt-3 gtc-title text-white sm:mt-4 ${innerMaxWidthClass}`}>{title}</h1>
-        <p className={`mt-4 gtc-body text-white/85 sm:mt-6 ${innerMaxWidthClass}`}>{description}</p>
+         <h1 className={`mt-3 gtc-title text-white sm:mt-4 leading-tight ${innerMaxWidthClass}`  }>{title}</h1>
+        <p className={`mt-4 gtc-body text-white/85 sm:mt-6 md:text-xl ${innerMaxWidthClass}`}>{description}</p>
         {/* {ctaLabel && ctaHref ? (
-          <div className={`mt-6 sm:mt-8 ${innerMaxWidthClass}`}>
+          <div className="mt-6 sm:mt-8">
             <Link href={ctaHref} className={ctaClassName}>
               {ctaLabel}
             </Link>
           </div>
-        ) : null} */}
+        ) : null}  */}
       </div>
       {extraImg &&
-        <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 w-full max-w-4xl -translate-x-1/2 translate-y-1/2 px-4">
+        <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 w-full max-w-7xl -translate-x-1/2 translate-y-1/2 px-4">
           <img
-            className="h-64 w-full object-contain sm:h-80 md:h-[600px]"
+            className="h-64 w-full object-contain sm:h-80 md:h-[550px]"
             src="/home-banner-img.webp"
             alt="Hero visual"
           />

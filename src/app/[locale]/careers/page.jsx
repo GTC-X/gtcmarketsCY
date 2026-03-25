@@ -21,7 +21,7 @@ export default async function NewCareersPage({ params }) {
           eyebrow="Careers"
           title="Join the Team Behind the Technology"
           description="Be part of GTC MARKETS (CY) LTD, a company supporting brokerage businesses through advanced technology infrastructure, DevOps expertise, and strategic operational solutions."
-          minHeightClass="min-h-[480px] sm:min-h-[400px] md:min-h-[430px]"
+          minHeightClass="min-h-[300px] sm:min-h-[400px] md:min-h-[430px]"
           innerMaxWidthClass="max-w-3xl text-left"
         />
       </Reveal>

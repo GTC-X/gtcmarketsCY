@@ -76,7 +76,7 @@ export function Header({ locale, nav }) {
                 href={item.href}
                 className={[
                   'rounded-full px-3 py-1.5 text-xs font-medium transition sm:px-4 sm:py-2 sm:text-sm',
-                  active ? 'bg-blue-600 text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900',
+                  active ? 'bg-[#101938] text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900',
                 ].join(' ')}
               >
                 {item.label}
