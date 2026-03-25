@@ -33,8 +33,6 @@ const generateEmailContent = (data) => ({
                     <tr><th style="padding:10px;text-align:left;background:#f2f2f2;color:#192055;">Inquiry Type</th><td style="padding:10px;border:1px solid #ddd;">${data?.inquiry_type || ''}</td></tr>
                     <tr><th colspan="2" style="padding:10px;text-align:left;background:#f2f2f2;color:#192055;">Message</th></tr>
                     <tr><td colspan="2" style="padding:10px;border:1px solid #ddd;">${data?.message || ''}</td></tr>
-                    <tr><th colspan="2" style="padding:10px;text-align:left;background:#f2f2f2;color:#192055;">Cover Letter</th></tr>
-                    <tr><td colspan="2" style="padding:10px;border:1px solid #ddd;">${data?.cover_letter || ''}</td></tr>
                   </table>
                   <p style="line-height:30px;padding-top:20px;">Best Regards,<br><strong style="color:#192055;margin-top:5px;">GTCFX Team</strong></p>
                 </td>
@@ -60,16 +58,7 @@ export async function POST(req) {
       phone,
       inquiry_type,
       message,
-      cover_letter,
-      fileName,
-      resume,
     } = body || {};
-
-    if (!resume) {
-      return NextResponse.json({ error: 'Missing resume or fileName' }, { status: 400 });
-    }
-
-    const attachmentBuffer = Buffer.from(resume, 'base64');
     const subject = 'A new contact form submission has been received';
     const { html } = generateEmailContent({
       first_name,
@@ -79,7 +68,6 @@ export async function POST(req) {
       phone,
       inquiry_type,
       message,
-      cover_letter,
     });
 
     const result = await mailgunClient.messages.create(MAILGUN_DOMAIN, {
@@ -89,21 +77,8 @@ export async function POST(req) {
       subject,
       text: `New contact request from ${first_name || ''} ${last_name || ''} (${email || '-'})`,
       html,
-      attachment: [
-        {
-          filename: fileName || 'attachment.pdf',
-          data: attachmentBuffer,
-        },
-      ],
     });
 
-    console.log('[contact-form] Mailgun accepted', {
-      id: result?.id,
-      message: result?.message,
-      to: 'aliadeel35@gmail.com',
-      bcc: 'zeeshan@gtcfx.com',
-      from: MAILGUN_FROM,
-    });
 
     return NextResponse.json({ message: 'Success', data: body }, { status: 200 });
   } catch (err) {

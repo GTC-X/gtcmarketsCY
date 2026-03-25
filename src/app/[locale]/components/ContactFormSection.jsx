@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { useFormik } from 'formik';
 import PhoneInput from 'react-phone-number-input';
 import { toast } from 'react-toastify';
@@ -14,8 +13,6 @@ const SUBJECT_OPTIONS = [
 ];
 
 export function ContactFormSection() {
-  const resumeInputRef = useRef(null);
-
   const formik = useFormik({
     initialValues: {
       fullName: '',
@@ -24,8 +21,6 @@ export function ContactFormSection() {
       phone: '',
       subject: '',
       message: '',
-      resume: null,
-      coverLetter: '',
     },
     validate: (values) => {
       const errors = {};
@@ -40,8 +35,6 @@ export function ContactFormSection() {
       if (!values.phone) errors.phone = 'Phone number is required.';
       if (!values.subject) errors.subject = 'Please select an inquiry type.';
       if (!values.message.trim()) errors.message = 'Message is required.';
-      if (!values.resume) errors.resume = 'Resume / CV is required.';
-      if (!values.coverLetter.trim()) errors.coverLetter = 'Cover letter is required.';
 
       return errors;
     },
@@ -49,17 +42,6 @@ export function ContactFormSection() {
       setStatus('sending');
 
       try {
-        const resumeBase64 = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => {
-            const result = String(reader.result || '');
-            const base64 = result.includes(',') ? result.split(',')[1] : result;
-            resolve(base64);
-          };
-          reader.onerror = reject;
-          reader.readAsDataURL(values.resume);
-        });
-
         const nameParts = values.fullName.trim().split(/\s+/);
         const firstName = nameParts[0] || '';
         const lastName = nameParts.slice(1).join(' ');
@@ -72,9 +54,6 @@ export function ContactFormSection() {
           phone: values.phone.trim(),
           inquiry_type: values.subject,
           message: values.message.trim(),
-          cover_letter: values.coverLetter.trim(),
-          fileName: values.resume?.name || 'attachment',
-          resume: resumeBase64,
         };
 
         const res = await fetch('/api/contact-form', {
@@ -88,9 +67,6 @@ export function ContactFormSection() {
         setStatus('success');
         toast.success('Message sent successfully.');
         resetForm();
-        if (resumeInputRef.current) {
-          resumeInputRef.current.value = '';
-        }
       } catch {
         setStatus('error');
         toast.error('Something went wrong. Please try again.');
@@ -209,41 +185,6 @@ export function ContactFormSection() {
           />
           {(formik.touched.message || formik.submitCount > 0) && formik.errors.message && (
             <p className="mt-1 text-xs font-medium text-red-700">{formik.errors.message}</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="contact-resume" className="block text-xs font-medium text-gray-700 sm:text-sm">
-            Resume / CV
-          </label>
-          <input
-            id="contact-resume"
-            ref={resumeInputRef}
-            name="resume"
-            type="file"
-            accept=".pdf,.doc,.docx"
-            onChange={(e) => formik.setFieldValue('resume', e.currentTarget.files?.[0] ?? null)}
-            onBlur={() => formik.setFieldTouched('resume', true)}
-            className="mt-1 w-full text-sm text-gray-600 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:font-medium file:text-emerald-700 file:hover:bg-emerald-100"
-          />
-          {(formik.touched.resume || formik.submitCount > 0) && formik.errors.resume && (
-            <p className="mt-1 text-xs font-medium text-red-700">{formik.errors.resume}</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="contact-cover-letter" className="block text-xs font-medium text-gray-700 sm:text-sm">
-            Cover Letter
-          </label>
-          <textarea
-            id="contact-cover-letter"
-            name="coverLetter"
-            rows={4}
-            value={formik.values.coverLetter}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            className="mt-1 w-full rounded-xl border border-gtc-border px-3 py-2 text-xs focus:border-gtc-primary focus:ring-1 focus:ring-gtc-primary sm:px-4 sm:py-2.5 sm:text-sm"
-          />
-          {(formik.touched.coverLetter || formik.submitCount > 0) && formik.errors.coverLetter && (
-            <p className="mt-1 text-xs font-medium text-red-700">{formik.errors.coverLetter}</p>
           )}
         </div>
         <button

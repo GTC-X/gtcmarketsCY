@@ -3,6 +3,14 @@ import { DevopsFintechSolutions } from '@/components/DevopsFintechSolutions';
 import { MarketingSolutions } from '@/components/MarketingSolutions';
 import { CommonHeroSection } from '@/components/CommonHeroSection';
 
+export async function generateMetadata() {
+  return {
+    title: 'Maximize Your Brokerage Growth with Advanced Technology Solutions',
+    description:
+      'GTC MARKETS (CY) LTD supports brokerage companies with technology infrastructure and marketing services designed to improve operations and market presence.',
+  };
+}
+
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
