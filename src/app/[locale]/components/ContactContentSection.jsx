@@ -3,7 +3,6 @@ import Link from 'next/link';
 export function ContactContentSection({ locale = 'en' }) {
   return (
     <div className="max-w-xl">
-      <p className="gtc-eyebrow">Contact</p>
       <h1 className="mt-3 gtc-title sm:mt-4">
         Get in Touch with Our Team
       </h1>

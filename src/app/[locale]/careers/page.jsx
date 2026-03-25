@@ -3,6 +3,13 @@ import { CurrentOpportunitiesSection } from '../components/CurrentOpportunitiesS
 import { Reveal } from '../components/Reveal';
 import { CommonHeroSection } from '@/components/CommonHeroSection';
 
+export async function generateMetadata() {
+  return {
+    title: 'Careers - GTC MARKETS (CY) LTD',
+    description:
+      'Join the Team Behind the Technology at GTC MARKETS (CY) LTD, a company supporting brokerage businesses through advanced technology infrastructure, DevOps expertise, and strategic operational solutions.',
+  };
+}
 export default async function NewCareersPage({ params }) {
   const { locale } = await params;
 
@@ -10,12 +17,12 @@ export default async function NewCareersPage({ params }) {
     <article className="">
       <Reveal>
         <CommonHeroSection
-          backgroundImage="/career-banner.jpg"
+          backgroundImage="/career-new.jpg"
           eyebrow="Careers"
           title="Join the Team Behind the Technology"
           description="Be part of GTC MARKETS (CY) LTD, a company supporting brokerage businesses through advanced technology infrastructure, DevOps expertise, and strategic operational solutions."
-          ctaLabel="Explore Careers"
-          minHeightClass="min-h-[480px] sm:min-h-[560px] md:min-h-[640px]"
+          minHeightClass="min-h-[300px] sm:min-h-[400px] md:min-h-[430px]"
+          innerMaxWidthClass="max-w-3xl text-left"
         />
       </Reveal>
       <Reveal>
