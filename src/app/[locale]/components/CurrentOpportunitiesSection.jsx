@@ -186,7 +186,7 @@ export function CurrentOpportunitiesSection() {
                 </label>
                 <PhoneInput
                   id="careers-phone"
-                  defaultCountry="AE"
+                  defaultCountry="CY"
                   international
                   name="phone"
                   value={formik.values.phone}

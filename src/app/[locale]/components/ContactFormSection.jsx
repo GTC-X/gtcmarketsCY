@@ -137,7 +137,7 @@ export function ContactFormSection() {
           </label>
           <PhoneInput
             id="contact-phone"
-            defaultCountry="AE"
+            defaultCountry="CY"
             international
             name="phone"
             value={formik.values.phone}
